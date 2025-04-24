@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- META -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		{% for stylesheet in ['style/main.css', 'style/index.css', 'style/base.css',
+		'style/recom.css'] %}
+		<link
+			href="{{ url_for('static', filename=stylesheet) }}"
+			rel="stylesheet"
+			type="text/css" />
+		{% endfor %}
+		<link href="{{ url_for('static', filename='style/fonts.css') }}" rel="stylesheet">
+
+		<title>RecomSys</title>
+	</head>
+	<body>
+		<div onclick="location.href = '/'" class="title link">
+			<p id="tagline">Navigate to Your Next Favourite.</p>
+			<h1 style="font-size: 3rem">CinemaScope</h1>
+		</div>
+
+		<div class="container">{% block body %} {% endblock body %}</div>
+
+		<!-- <footer> -->
+		<!-- <p>All rights reserved ©</p> -->
+		<!-- </footer> -->
+
+	</body>
+</html>

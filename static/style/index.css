@@ -1,0 +1,110 @@
+:root {
+	--card-width: 244px;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 8px;
+	width: 100%;
+}
+
+section h1 {
+	color: #edf0fe;
+}
+
+.search {
+	display: flex;
+	background: #edf0fe42;
+	padding: 0.4rem 1rem;
+	justify-content: space-between;
+	border-radius: 24px;
+	margin-bottom: 1rem;
+	width: 20rem;
+}
+
+.search input {
+	background: transparent;
+	border: none;
+	color: #edf0fe;
+	font-family: Body;
+	font-size: 1rem;
+	min-width: 80%; /* placeholder is taking extra space, this is a temporary fix */
+}
+
+.search-box img {
+	margin-left: 1rem;
+}
+
+input:focus {
+	outline: none;
+}
+
+.library {
+	display: grid;
+	max-width: 100%;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
+	overflow: scroll;
+}
+
+.card {
+	width: var(--card-width);
+	height: 293px;
+	position: relative;
+	box-shadow: 0px 4px 8.1px 7px rgba(0, 0, 0, 0.25);
+	border-radius: 11.11px;
+	overflow: hidden;
+	cursor: default;
+	gap: 36.11px;
+}
+
+.poster {
+	width: 100%;
+}
+
+.curtain {
+	display: grid;
+	place-items: center;
+	background-color: rgba(100, 100, 100, 0.171);
+	position: absolute;
+	backdrop-filter: blur(0.313rem) saturate(150%) contrast(0.9);
+	transition: 0.2s ease-out;
+	width: var(--card-width);
+	bottom: -100%;
+}
+
+.curtain h1 {
+	text-align: center;
+}
+
+.card:hover .curtain {
+	bottom: 0;
+	inset: 0;
+}
+
+#close-btn {
+	background-color: black;
+	/* backdrop-filter: invert(80%); */
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	padding: 5px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 4%;
+	right: 7%;
+	text-decoration: none;
+	color: grey;
+	font-family: Comic Sans MS;
+	font-size: x-small;
+}
+
+.row2 .card {
+	cursor: pointer;
+}

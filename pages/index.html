@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block body %}
+
+<section>
+	<h2>You might also like</h2>
+
+	<div class="library">
+		{% if history %} {% for movies in history %}
+		<div class="card">
+			<img class="poster" src="{{ movies.thumbnail }}" alt="Movie Poster" />
+			<div class="curtain">
+				<h3>{{ movies.name }}</h3>
+				<a id="close-btn" type="button" href="/delete/{{ movies.id }}"> x </a>
+			</div>
+		</div>
+		{% endfor %} {% else %}
+		<div class="void">
+			<h3 style="color: rgba(212, 212, 212, 0.219); margin-left: 1rem;">No history found.</h3>
+		</div>
+
+		{% endif %}
+	</div>
+</section>
+
+<section class="grow-flex">
+	<form class="search" action="/" method="POST">
+		<input
+			name="film"
+			type="text"
+			placeholder="Tell us your favourite movie" />
+		<img id="recommend-button" style="width: 1.5rem; aspect-ratio: 1/1;" class="link" src="/static/assets/search.png" />
+	</form>
+
+	{% if searchresults %} 
+		<div class="library grow-flex">
+			{% for res in searchresults %}
+				<a href="{{ url_for('recom', movie_id=res.movie_id) }}">
+    				<div class="card">
+        				<img class="poster" src="{{ res.poster }}" alt="Movie Poster" />
+        				<div class="curtain">
+            				<h3>{{ res.title }}</h3>
+        				</div>
+    				</div>
+				</a>
+			{% endfor %}
+		</div>
+	{% else %}
+		{% if search_found==False  %}
+		<div class="grow-flex center">
+			<div class="words">
+				<h3>No Matching Results.</h3>
+                <br>
+				<h3>(╯°□°)╯︵ ┻━┻</h3>
+			</div>
+		</div>
+		{% endif %}
+		{% if search_found==True  %}
+		<div class="grow-flex center">
+			<div class="words">
+				<h3>Nothing yet to show.</h3>
+                <br>
+				<h3>(╯°□°)╯︵ ┻━┻</h3>
+			</div>
+		</div>
+		{% endif %}
+	{% endif %}
+</div>
+
+{% endblock body %}
